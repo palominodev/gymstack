@@ -3,7 +3,7 @@ import { GymStackRoute } from "./GymStack/routes/GymStackRoute"
 import { AuthRoute } from "./auth/routes/AuthRoute"
 
 export const AppRouter = () => {
-	const isAuthenticated = false
+	const isAuthenticated = true
 	return (
 		<Routes>
 			{
