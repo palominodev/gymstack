@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { GymStackApp } from './GymStackApp'
+import { AppRouter } from './AppRouter'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <GymStackApp />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <React.StrictMode>
+      <AppRouter />
+    </React.StrictMode>
+  </BrowserRouter>
 )
