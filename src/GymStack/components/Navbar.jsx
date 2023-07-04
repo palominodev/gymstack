@@ -5,10 +5,10 @@ export const Navbar = () => {
 	<nav>
 		<ul>
 			<li>
-				<NavLink to={'admin'}>Inicio</NavLink>
+				<NavLink className={'font-bold'} to={'admin'}>Inicio</NavLink>
 			</li>
 			<li>
-				<NavLink to={'client'}>Clientes</NavLink>
+				<NavLink className={'font-bold'} to={'client'}>Clientes</NavLink>
 			</li>
 			{/* <li>
 				<NavLink to={'instructores'}>Instructores</NavLink>
