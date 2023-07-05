@@ -75,6 +75,9 @@ export const PlansRegister = () => {
 					<option value="11">11 meses</option>
 					<option value="12">12 meses</option>
 				</select>
+				{/* TODO:  	hacer que salga un label diciendo que
+							la suscripcion terminará en X fecha.
+				*/}
 				<label htmlFor="plan_days">Dias a la semana del Plan</label>
 				<input 
 					max={7} 
