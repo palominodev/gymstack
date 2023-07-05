@@ -17,7 +17,7 @@ export const PlansRegister = () => {
 
 	const onCreatePlan = (e) => {
 		e.preventDefault()
-		console.log(formState)
+		console.log(formState);
 	}
 
 	return (
@@ -60,6 +60,21 @@ export const PlansRegister = () => {
 						onClick={addBeneficio}
 						type="button">Añadir beneficio</button>
 				</div>
+				<label htmlFor="plan_month">Meses de duracion</label>
+				<select onChange={onInputChange} name="plan_month" id="plan_month">
+					<option value="1">1 mes</option>
+					<option value="2">2 meses</option>
+					<option value="3">3 meses</option>
+					<option value="4">4 meses</option>
+					<option value="5">5 meses</option>
+					<option value="6">6 meses</option>
+					<option value="7">7 meses</option>
+					<option value="8">8 meses</option>
+					<option value="9">9 meses</option>
+					<option value="10">10 meses</option>
+					<option value="11">11 meses</option>
+					<option value="12">12 meses</option>
+				</select>
 				<label htmlFor="plan_days">Dias a la semana del Plan</label>
 				<input 
 					max={7} 
