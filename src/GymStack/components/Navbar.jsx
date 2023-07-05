@@ -10,9 +10,9 @@ export const Navbar = () => {
 			<li>
 				<NavLink className={'font-bold'} to={'client'}>Clientes</NavLink>
 			</li>
-			{/* <li>
-				<NavLink to={'instructores'}>Instructores</NavLink>
-			</li> */}
+			<li>
+				<NavLink className={'font-bold'} to={'plans'}>Planes</NavLink>
+			</li>
 			{/* <li>Planes</li> */}
 		</ul>
 	</nav>
