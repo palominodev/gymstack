@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 export const Navbar = () => {
   return (
-	<nav className="mb-6 bg-orange-500">
+	<nav className=" bg-orange-500">
 		<ul className="flex justify-center">
 			<li className={`p-4`}>
 				<NavLink 
