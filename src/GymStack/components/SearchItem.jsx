@@ -11,16 +11,20 @@ export const SearchItem = ({ name, suscription, isValid=null }) => {
 	}
 
 	return (
-		<div className={`border mt-3 p-3 rounded-md ${status(isValid)}`}>
+		<div className={`shadow-lg shadow-orange-700 mt-3 p-3 rounded-md ${status(isValid)}`}>
 			<p className="text-lg">{name}</p>
 			<p>Tipo: <span className="font-bold">{suscription}</span></p>
 			<div className="flex justify-between gap-3 items-center">
 				<StatusTag isValid={isValid} />
-				{
-					(isValid === 'deprecated')
-					? <button className="bg-neutral-950 p-2 text-white rounded-md" >Actualizar Suscripcion</button>
-					: <button className="bg-neutral-950 p-2 text-white rounded-md">Registar Asistencia</button>
-				}
+				<button className="bg-neutral-950 p-2 text-white rounded-md">
+					{
+						(isValid === 'valid')
+						? 'Registar Asistencia'
+						: (isValid === 'full')
+							? 'Asistencias completas'
+							: 'Actualizar Suscripcion'
+					}
+				</button>
 			</div>
 		</div>
 	)
