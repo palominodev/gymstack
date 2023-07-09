@@ -9,8 +9,8 @@ export const UserAttendance = () => {
       </form>
       <section>
         <SearchItem isValid={'deprecated'} suscription={'PRO'} name={"Jeremy Scott Palomino Fernandez"} />
-        <SearchItem isValid={'hola'} suscription={'PRO'} name={"Jeremy Scott Palomino Fernandez"} />
-        <SearchItem isValid={'deprecated'} suscription={'PRO'} name={"Jeremy Scott Palomino Fernandez"} />
+        <SearchItem isValid={'valid'} suscription={'PRO'} name={"Jeremy Scott Palomino Fernandez"} />
+        <SearchItem isValid={'full'} suscription={'PRO'} name={"Jeremy Scott Palomino Fernandez"} />
       </section>
     </article>
   )
