@@ -1,18 +1,19 @@
 import { useNavigate } from "react-router-dom"
+import { RowTableUser } from "../components/RowTableUser"
 
 export const Clients = () => {
   const navigate = useNavigate()
   return (
-    <section>
+    <section className="p-3">
       <div className="flex justify-between">
-        <h2 className="text-4xl" >Clientes</h2>
+        <h2 className="text-4xl font-bold" >Clientes</h2>
         <button 
           onClick={()=> navigate('/client/new')}
           className="mx-4 p-2 bg-orange-700 font-bold text-white rounded-md transition-all duration-300 hover:bg-orange-600">
             Crear nuevo
         </button>
       </div>
-      <section className="overflow-x-scroll">
+      <section className="overflow-x-scroll lg:overflow-hidden">
         <table>
           <thead>
             <tr>
@@ -27,16 +28,9 @@ export const Clients = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="border p-3" >1248794</td>
-              <td className="border p-3" >Jeremy Scott</td>
-              <td className="border p-3" >Palomino Fernandez</td>
-              <td className="border p-3" >902966065</td>
-              <td className="border p-3" >jeremy@google.com</td>
-              <td className="border p-3" >Pro</td>
-              <td className="border p-3" >12-03-2023</td>
-              <td className="border p-3" >Activo</td>
-            </tr>
+            <RowTableUser />
+            <RowTableUser />
+            <RowTableUser />
           </tbody>
         </table>
       </section>
