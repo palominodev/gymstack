@@ -22,7 +22,7 @@ export const Clients = () => {
       <section className="overflow-x-scroll lg:overflow-hidden">
         <table className="text-white">
           <thead className="bg-stone-950">
-            <tr >
+            <tr>
               <th className="border p-3">ID</th>
               <th className="border p-3">Nombre</th>
               <th className="border p-3">Apellido</th>
