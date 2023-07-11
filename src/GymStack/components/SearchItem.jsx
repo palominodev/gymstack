@@ -4,10 +4,10 @@ import { StatusTag } from "./StatusTag"
 
 export const SearchItem = ({ name, suscription, isValid = null, complete_day, total_days }) => {
 
-	const { BgColor } = useBgColor(isValid)
+	const {color_soft } = useBgColor(isValid)
 
 	return (
-		<div className={`${BgColor(500)} shadow-lg shadow-orange-700 mt-3 p-3 rounded-md`}>
+		<div className={`${color_soft} shadow-lg shadow-orange-700 mt-3 p-3 rounded-md`}>
 			<p className="text-lg">{name}</p>
 			<p>Tipo: <span className="font-bold">{suscription}</span></p>
 			<div className="flex justify-between gap-3 items-center">
