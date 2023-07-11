@@ -4,7 +4,7 @@ import { RowTableUser } from "../components/RowTableUser"
 export const Clients = () => {
   const navigate = useNavigate()
   return (
-    <section className="p-3 bg-stone-800 min-h-screen">
+    <section className="p-3">
       <div className="flex justify-between mb-4 flex-wrap">
         <h2 className="text-5xl md:text-6xl font-bold" >Clientes</h2>
         <button 

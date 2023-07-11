@@ -4,7 +4,7 @@ import { UserCardInfo } from "../components/UserCardInfo"
 
 export const Admin = () => {
   return (
-	<main className="px-4 pt-6 pb-4 bg-stone-800">
+	<main className="px-4 pt-6 pb-4">
     <section className="flex gap-2" >
       <UserCardInfo />
       <PlanCardInfo />
