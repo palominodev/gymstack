@@ -4,7 +4,7 @@ import { StatusTag } from "./StatusTag"
 
 export const SearchItem = ({ name, suscription, isValid = null, complete_day, total_days }) => {
 
-	const {color_soft } = useBgColor(isValid)
+	const {color_soft} = useBgColor(isValid)
 
 	return (
 		<div className={`${color_soft} shadow-lg shadow-orange-700 mt-3 p-3 rounded-md`}>

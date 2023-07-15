@@ -4,15 +4,31 @@ export const gymstackSlice = createSlice({
 	name: 'gymstack',
 
 	initialState: {
-		name: "Hola"
+		planes: [],
+		users: [],
+		searchUsers: [],
+		activeUsers: 0,
+		activePlans: 0
 	},
 
 	reducers: {
-		setName: (state, {payload}) => {
-			state.name = payload.name
+		setUsers: (state, {payload}) => {
+			state.users = payload
+		},
+		setPlans: (state, {payload}) => {
+			state.planes = payload
+		},
+		setActiveUsers:(state) => {
+			state.activeUsers = state.users.filter( user => user.status !== 'deprecated').length
+		},
+		setCountPlans: (state) => {
+			state.activePlans = state.planes.length
+		},
+		searchUsersByName: (state, {payload}) => {
+			state.searchUsers = state.users.filter( user => user.name.toLowerCase().includes(payload.toLowerCase().trim()))
 		}
 	},
 });
 
 
-export const { setName } = gymstackSlice.actions;
+export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans } = gymstackSlice.actions;

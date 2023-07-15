@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { RowTableUser } from "../components/RowTableUser"
+import { useSelector } from "react-redux"
 
 export const Clients = () => {
   const navigate = useNavigate()
+  const { users } = useSelector(state => state.gymStack)
   return (
     <section className="p-3">
       <div className="flex justify-between mb-4 flex-wrap">
@@ -34,13 +36,19 @@ export const Clients = () => {
             </tr>
           </thead>
           <tbody>
+            {
+              users.map( user => ( 
+              
+                <RowTableUser key={user.uid} {...user} />
+
+              ))
+            }
+            {/* <RowTableUser />
             <RowTableUser />
             <RowTableUser />
             <RowTableUser />
             <RowTableUser />
-            <RowTableUser />
-            <RowTableUser />
-            <RowTableUser />
+            <RowTableUser /> */}
           </tbody>
         </table>
       </section>

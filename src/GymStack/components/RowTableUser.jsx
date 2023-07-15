@@ -1,14 +1,18 @@
-export const RowTableUser = () => {
+import { StatusTag } from "./StatusTag"
+
+export const RowTableUser = ({uid,name, apellido, numero, correo, suscripcion, vence, status}) => {
   return (
 	<tr className="even:bg-neutral-700">
-		<td className="border p-3" >1248794</td>
-		<td className="border p-3" >Jeremy Scott</td>
-		<td className="border p-3" >Palomino Fernandez</td>
-		<td className="border p-3" >902966065</td>
-		<td className="border p-3" >jeremy@google.com</td>
-		<td className="border p-3" >Pro</td>
-		<td className="border p-3" >12/03/2023</td>
-		<td className="border p-3" >Activo</td>
+		<td className="border p-3" >{uid}</td>
+		<td className="border p-3" >{name}</td>
+		<td className="border p-3" >{name}</td>
+		<td className="border p-3" >{numero}</td>
+		<td className="border p-3" >{correo}</td>
+		<td className="border p-3" >{suscripcion}</td>
+		<td className="border p-3" >{vence}</td>
+		<td className="border p-3" > <StatusTag isValid={status} /> </td>
 	</tr>
   )
 }
+
+//Rellenar la tabla con los datos de la api

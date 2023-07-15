@@ -1,9 +1,8 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { useForm } from "../../hooks/useForm"
 
 
 export const PlansRegister = () => {
-	const [beneficios_list, setBeneficios_list] = useState([''])
 	const {formState,plan_name,plan_days,plan_price,beneficios,onInputChange, onInputMultiChange, addBeneficio} = useForm({
 		plan_name:'',
 		plan_price: '',
