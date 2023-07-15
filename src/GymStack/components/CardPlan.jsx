@@ -1,6 +1,7 @@
 export const CardPlan = ({price}) => {
   return (
-	<article className="flex flex-col sm:flex-row justify-center items-center border rounded-md p-4">
+	<article 
+		className="flex flex-col sm:flex-row justify-center items-center border rounded-md p-4 bg-slate-600">
 		<p className="text-3xl text-center mb-4" >
 			<span className="text-7xl font-bold">{price}</span> soles
 		</p>
@@ -13,4 +14,4 @@ export const CardPlan = ({price}) => {
 		</ul>
 	</article>
   )
-}
+}	
