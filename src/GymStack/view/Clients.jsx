@@ -1,10 +1,28 @@
 import { useNavigate } from "react-router-dom"
 import { RowTableUser } from "../components/RowTableUser"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useRef } from "react"
+import { startGetUsers } from "../../store/gymstack/thunks"
+import { searchUsersByName } from "../../store/gymstack/gymstackSlice"
 
 export const Clients = () => {
   const navigate = useNavigate()
-  const { users } = useSelector(state => state.gymStack)
+  const dispatch = useDispatch()
+  const inputSearch = useRef()
+  const { users, searchUsers } = useSelector(state => state.gymStack)
+
+  useEffect(() => {
+    if(users.length === 0) {
+      dispatch(startGetUsers())
+      console.log('set Users')
+    }
+  }, [])
+
+  const onSearch = () => {
+    dispatch(searchUsersByName(inputSearch.current.value))
+  }
+  
+
   return (
     <section className="p-3">
       <div className="flex justify-between mb-4 flex-wrap">
@@ -17,7 +35,9 @@ export const Clients = () => {
         <input 
           className="block w-full my-4 text-xl p-2 outline-none rounded-md border-2 border-black" 
           placeholder="Ingresa nombre..."
-          type="text" 
+          ref={inputSearch}
+          type="text"
+          onChange={onSearch} 
           name="search_user" 
           id="search_user" />
       </div>
@@ -37,11 +57,14 @@ export const Clients = () => {
           </thead>
           <tbody>
             {
-              users.map( user => ( 
-              
+              (inputSearch?.current?.value?.length >= 1)
+              ? searchUsers.map( user => ( 
                 <RowTableUser key={user.uid} {...user} />
-
               ))
+              : users.map( user => ( 
+                <RowTableUser key={user.uid} {...user} />
+              ))
+              
             }
             {/* <RowTableUser />
             <RowTableUser />

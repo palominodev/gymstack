@@ -10,7 +10,6 @@ export const UserAttendance = () => {
 
   const onSearch = () => {
     dispatch(searchUsersByName(inputSearchRef.current.value))
-    console.log(inputSearchRef.current.value);
   }
   // const onSearch = (e) => {
   //   dispatch(searchUsersByName(e.target.value))

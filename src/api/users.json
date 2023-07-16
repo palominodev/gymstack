@@ -2,6 +2,9 @@
 	{
 		"uid": "añlskslnañdlf",
 		"name": "Arturo Jimenez Reyes",
+		"phone": "987654321",
+		"email": "user@google.com",
+		"vence": "12-03-23",
 		"type": "Basic",
 		"status": "deprecated",
 		"complete_days": 1,
@@ -10,6 +13,9 @@
 	{
 		"uid": "asdfañlsdf",
 		"name": "Juan Perez",
+		"phone": "987654321",
+		"email": "user@google.com",
+		"vence": "12-03-23",
 		"type": "PRO",
 		"status": "valid",
 		"complete_days": 3,
@@ -18,6 +24,9 @@
 	{
 		"uid": "fjonafrs",
 		"name": "Santiago Ayala",
+		"phone": "987654321",
+		"email": "user@google.com",
+		"vence": "12-03-23",
 		"type": "PRO",
 		"status": "deprecated",
 		"complete_days": 3,
@@ -26,6 +35,9 @@
 	{
 		"uid": "fañlsdkañl",
 		"name": "Jeremy Palomino",
+		"phone": "987654321",
+		"email": "user@google.com",
+		"vence": "12-03-23",
 		"type": "PRO",
 		"status": "valid",
 		"complete_days": 3,
@@ -34,6 +46,9 @@
 	{
 		"uid": "fañlkcasdf",
 		"name": "Loli Peña",
+		"phone": "987654321",
+		"email": "user@google.com",
+		"vence": "12-03-23",
 		"type": "PRO",
 		"status": "full",
 		"complete_days": 3,
@@ -42,6 +57,9 @@
 	{
 		"uid": "fañlkjñlkwm",
 		"name": "Tania Lopez",
+		"phone": "987654321",
+		"email": "user@google.com",
+		"vence": "12-03-23",
 		"type": "PRO",
 		"status": "deprecated",
 		"complete_days": 3,
@@ -50,6 +68,9 @@
 	{
 		"uid": "jañlskvañlkm",
 		"name": "Miguel Salas",
+		"phone": "987654321",
+		"email": "user@google.com",
+		"vence": "12-03-23",
 		"type": "Expert",
 		"status": "full",
 		"complete_days": 7,
