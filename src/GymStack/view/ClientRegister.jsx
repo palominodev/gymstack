@@ -1,6 +1,9 @@
+import { useDispatch } from "react-redux"
 import { useForm } from "../../hooks/useForm"
+import { startCreateUser } from "../../store/gymstack/thunks"
 
 export const ClientRegister = () => {
+	const dispatch = useDispatch()
 	const {
 		name,
 		last_name,
@@ -18,8 +21,10 @@ export const ClientRegister = () => {
 	})
 	const onCreatedClient = (e) => {
 		e.preventDefault()
-		console.log(formState);
+		dispatch(startCreateUser(formState))
 	}
+
+
 
 	return (
 		<section>
@@ -30,6 +35,7 @@ export const ClientRegister = () => {
 				<div className="flex flex-wrap justify-center">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="name">Nombre</label>
 					<input
+						required
 						onChange={onInputChange}
 						value={name}
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
@@ -40,6 +46,7 @@ export const ClientRegister = () => {
 				<div className="flex flex-wrap justify-center">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="last_name">Apellido</label>
 					<input
+						required
 						onChange={onInputChange}
 						value={last_name}
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
@@ -50,6 +57,7 @@ export const ClientRegister = () => {
 				<div className="flex flex-wrap justify-center">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="phone">Telefono</label>
 					<input
+						required
 						onChange={onInputChange}
 						value={phone}
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
@@ -60,6 +68,7 @@ export const ClientRegister = () => {
 				<div className="flex flex-wrap justify-center">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="email">Email</label>
 					<input
+						required
 						onChange={onInputChange}
 						value={email}
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"

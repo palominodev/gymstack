@@ -11,7 +11,6 @@ export const Admin = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(startGetUsers())
     dispatch(startGetPlans())
     dispatch(setActiveUsers())
     dispatch(setCountPlans())

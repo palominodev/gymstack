@@ -1,20 +1,23 @@
 import { useDispatch, useSelector } from "react-redux"
 import { searchUsersByName } from "../../store/gymstack/gymstackSlice"
 import { SearchContainer } from "./SearchContainer"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
+import { startGetUsers } from "../../store/gymstack/thunks"
 
 export const UserAttendance = () => {
   const dispatch = useDispatch()
   const inputSearchRef = useRef()
-  const { searchUsers } = useSelector(state => state.gymStack)
+  const { searchUsers, users } = useSelector(state => state.gymStack)
 
   const onSearch = () => {
     dispatch(searchUsersByName(inputSearchRef.current.value))
   }
-  // const onSearch = (e) => {
-  //   dispatch(searchUsersByName(e.target.value))
-  //   console.log(':0');
-  // }
+
+  useEffect(() => {
+    if(users.length === 0) {
+      dispatch(startGetUsers())
+    }
+  })
 
 
   return (

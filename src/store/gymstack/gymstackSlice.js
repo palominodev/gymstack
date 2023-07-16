@@ -26,9 +26,12 @@ export const gymstackSlice = createSlice({
 		},
 		searchUsersByName: (state, {payload}) => {
 			state.searchUsers = state.users.filter( user => user.name.toLowerCase().includes(payload.toLowerCase().trim()))
+		},
+		createUser: (state, {payload}) => {
+			state.users = [...state.users, payload]
 		}
 	},
 });
 
 
-export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans } = gymstackSlice.actions;
+export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser } = gymstackSlice.actions;
