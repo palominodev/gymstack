@@ -29,9 +29,12 @@ export const gymstackSlice = createSlice({
 		},
 		createUser: (state, {payload}) => {
 			state.users = [...state.users, payload]
+		},
+		createPlan: (state, {payload}) => {
+			state.planes = [...state.planes, payload]
 		}
 	},
 });
 
 
-export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser } = gymstackSlice.actions;
+export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan } = gymstackSlice.actions;

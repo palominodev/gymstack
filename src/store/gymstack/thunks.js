@@ -1,4 +1,4 @@
-import { createUser, setPlans, setUsers } from "./gymstackSlice"
+import { createPlan, createUser, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
 import users from "../../api/users.json"
 import plans from "../../api/planes.json"
 
@@ -12,6 +12,7 @@ export const startGetUsers = () => {
 export const startGetPlans = () => {
 	return async(dispatch) => {
 		dispatch(setPlans(plans))
+		dispatch(setCountPlans())
 	}
 }
 
@@ -29,5 +30,18 @@ export const startCreateUser = (formState) => {
 		}
 		console.log(user)
 		dispatch(createUser(user))
+	}
+}
+
+export const startCreatePlan = (formState) => {
+	return async(dispatch) => {
+		//Grabarlo en la base de datos
+		delete formState.ok
+		const plan = {
+			id: Date.now(),
+			...formState,
+		}
+		console.log(plan);
+		dispatch(createPlan(plan))
 	}
 }

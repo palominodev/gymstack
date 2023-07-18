@@ -9,9 +9,9 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store} >
     <BrowserRouter>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <AppRouter />
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </BrowserRouter>
   </Provider>
 )

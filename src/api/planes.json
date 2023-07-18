@@ -1,5 +1,6 @@
 [
 	{
+		"id": 4170398417093,
 		"price": 30,
 		"name": "Basic",
 		"beneficios": ["Beneficio #1", "Beneficio #2", "Beneficio #3"],
@@ -7,6 +8,7 @@
 		"daysForWeek": 3
 	},
 	{
+		"id": 8147029384170,
 		"price": 50,
 		"name": "PRO",
 		"beneficios": ["Beneficio #1", "Beneficio #2", "Beneficio #3"],
@@ -14,6 +16,7 @@
 		"daysForWeek": 5
 	},
 	{
+		"id": 8394502942572,
 		"price": 80,
 		"name": "Expert",
 		"beneficios": ["Beneficio #1", "Beneficio #2", "Beneficio #3"],

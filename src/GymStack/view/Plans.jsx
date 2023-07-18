@@ -1,8 +1,19 @@
 import { useNavigate } from "react-router-dom"
 import { CardPlan } from "../components/CardPlan"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { startGetPlans } from "../../store/gymstack/thunks"
 
 export const Plans = () => {
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const { planes } = useSelector((state) => state.gymStack )
+
+	useEffect(() => {
+		if(planes.length === 0){
+			dispatch(startGetPlans())
+		}
+	},[])
 	return (
 		<section className="p-3">
 			<div className="flex justify-between mb-4 flex-wrap">
@@ -14,9 +25,11 @@ export const Plans = () => {
 				</button>
 			</div>
 			<section className="grid justify-center grid-cols-3 gap-4">
-				<CardPlan price={30} />
-				<CardPlan price={50} />
-				<CardPlan price={80} />
+				{
+					planes.map(plan => (
+						<CardPlan key={plan.id}  {...plan}   />
+					))
+				}
 			</section>
 		</section>
 	)

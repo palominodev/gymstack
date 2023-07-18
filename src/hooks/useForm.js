@@ -12,10 +12,10 @@ export const useForm = (initialState) => {
 	}
 
 	const addBeneficio = (beneficio) => {
-		console.log(beneficio)
 		setFormState({
 			...formState,
-			beneficios: [...beneficio, '']
+			ok:true,
+			beneficios: beneficio
 		})
 	}
 
@@ -24,13 +24,20 @@ export const useForm = (initialState) => {
 			...initialState,
 		})
 	}
+	const addField = () => {
+		setFormState({
+			...formState,
+			beneficios: [...formState.beneficios,'']
+		})
+	}
 
 	return {
 		...formState,
 		formState,
 		onInputChange,
 		onResetForm,
-		addBeneficio
+		addBeneficio,
+		addField,
 	}
 
 }

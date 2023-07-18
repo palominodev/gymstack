@@ -1,28 +1,45 @@
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import { useForm } from "../../hooks/useForm"
+import { useDispatch } from "react-redux"
+import { startCreatePlan } from "../../store/gymstack/thunks"
 
 
 export const PlansRegister = () => {
-	const {formState,plan_name,plan_days,plan_price,beneficios,onInputChange, onInputMultiChange, addBeneficio} = useForm({
-		plan_name:'',
-		plan_price: '',
-		plan_days: '',
-		beneficios: ['']
+	const dispatch = useDispatch()
+	const {ok,formState,name,daysForWeek,price,beneficios,onInputChange, addBeneficio,month_durations, addField} = useForm({
+		ok: false,
+		name:'',
+		price: '',
+		month_durations: '',
+		daysForWeek: '',
+		beneficios: []
 	})
 	const inputContainer = useRef()
 	
 	const onAddBeneficio = () => {
-		const newListBeneficios = []
-		inputContainer.current.childNodes.forEach(item => {
-			newListBeneficios.push(item.value);
-		})
-		addBeneficio(newListBeneficios);
+		addField()
 	}
 
 	const onCreatePlan = (e) => {
 		e.preventDefault()
-		console.log(formState);
+		const newListBeneficios = []
+		inputContainer.current.childNodes.forEach(item => {
+			if(item.value !== ''){
+				newListBeneficios.push(item.value);
+			}
+		})
+		
+		addBeneficio(newListBeneficios);
 	}
+	
+	useEffect(() => {
+		
+		const savePlan = () => {
+			if(!ok) return
+			dispatch(startCreatePlan(formState))
+		}
+		savePlan()
+	},[beneficios])
 
 	return (
 		<section>
@@ -31,24 +48,24 @@ export const PlansRegister = () => {
 			>
 				<h2 className="text-6xl font-bold text-center my-6">Crear Plan</h2>
 				<div className="flex flex-wrap justify-center">
-					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="plan_name">Nombre del plan</label>
+					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="name">Nombre del plan</label>
 					<input
 						onChange={onInputChange}
-						value={plan_name}
+						value={name}
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
 						type="text"
-						name="plan_name" 
-						id="plan_name" />
+						name="name" 
+						id="name" />
 				</div>
 				<div className="flex flex-wrap justify-center">
-					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="plan_name">Precio del plan</label>
+					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="name">Precio del plan</label>
 					<input
-						value={plan_price}
+						value={price}
 						onChange={onInputChange}
 						type="number"
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
-						name="plan_price"
-						id="plan_price" />
+						name="price"
+						id="price" />
 				</div>
 				<div className="flex flex-col items-center mx-6">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="plan_benefics">Beneficios del plan</label>
@@ -58,7 +75,6 @@ export const PlansRegister = () => {
 								key={i}
 								type="text"
 								className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full"
-								onChange={onInputMultiChange}
 								name={`beneficio${i + 1}`} 
 								id={`beneficio${i + 1}`} />
 						))}
@@ -69,12 +85,12 @@ export const PlansRegister = () => {
 						type="button">Añadir beneficio</button>
 				</div>
 				<div className="flex flex-col items-center mx-6">
-					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="plan_month">Meses de duracion</label>
+					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="month_durations">Meses de duracion</label>
 					<select 
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
 						onChange={onInputChange} 
-						name="plan_month" 
-						id="plan_month">
+						name="month_durations" 
+						id="month_durations">
 						<option value="1">1 mes</option>
 						<option value="2">2 meses</option>
 						<option value="3">3 meses</option>
@@ -90,17 +106,17 @@ export const PlansRegister = () => {
 					</select>
 				</div>
 				<div className="flex flex-col items-center mx-6">
-					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="plan_days">Dias a la semana del Plan</label>
+					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="daysForWeek">Dias a la semana del Plan</label>
 					<input
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
 						max={7}
 						min={1}
 						required
-						value={plan_days}
+						value={daysForWeek}
 						onChange={onInputChange}
 						type="number"
-						name="plan_days"
-						id="plan_days" />
+						name="daysForWeek"
+						id="daysForWeek" />
 				</div>
 				<div className="flex flex-col items-center mx-6">
 					<input
