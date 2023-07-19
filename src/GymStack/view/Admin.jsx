@@ -2,7 +2,7 @@ import { PlanCardInfo } from "../components/PlanCardInfo"
 import { UserAttendance } from "../components/UserAttendance"
 import { UserCardInfo } from "../components/UserCardInfo"
 import { useEffect } from "react"
-import { startGetPlans, startGetUsers } from "../../store/gymstack/thunks"
+import { startGetPlans } from "../../store/gymstack/thunks"
 import { useDispatch, useSelector } from "react-redux"
 import { setActiveUsers, setCountPlans } from "../../store/gymstack/gymstackSlice"
 

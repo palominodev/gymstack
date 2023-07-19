@@ -17,7 +17,7 @@ export const UserAttendance = () => {
     if(users.length === 0) {
       dispatch(startGetUsers())
     }
-  })
+  },[])
 
 
   return (

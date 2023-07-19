@@ -8,9 +8,8 @@ export const startLoginWithEmail = ({email,password}) =>{
 	return async(dispatch) => {
 		const result = await signInWithEmail({email,password})
 		if(!result.ok) return dispatch(logout())
-
-		dispatch(login())
-		console.log(result);
+		const { uid } = result
+		dispatch(login({uid}))
 	}
 }
 
