@@ -2,11 +2,13 @@ import { useEffect, useRef } from "react"
 import { useForm } from "../../hooks/useForm"
 import { useDispatch } from "react-redux"
 import { startCreatePlan } from "../../store/gymstack/thunks"
+import { useNavigate } from "react-router-dom"
 
 
 export const PlansRegister = () => {
 	const dispatch = useDispatch()
-	const {ok,formState,name,daysForWeek,price,beneficios,onInputChange, addBeneficio,month_durations, addField} = useForm({
+	const navigate = useNavigate()
+	const {ok,formState,name,daysForWeek,price,beneficios,onInputChange, addBeneficio, addField} = useForm({
 		ok: false,
 		name:'',
 		price: '',
@@ -37,6 +39,7 @@ export const PlansRegister = () => {
 		const savePlan = () => {
 			if(!ok) return
 			dispatch(startCreatePlan(formState))
+			navigate('/plans')
 		}
 		savePlan()
 	},[beneficios])

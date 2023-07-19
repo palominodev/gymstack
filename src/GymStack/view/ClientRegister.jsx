@@ -1,9 +1,12 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "../../hooks/useForm"
 import { startCreateUser } from "../../store/gymstack/thunks"
+import { useNavigate } from "react-router-dom"
 
 export const ClientRegister = () => {
 	const dispatch = useDispatch()
+	const navigate = useNavigate()
+	const { planes } = useSelector( state => state.gymStack)
 	const {
 		name,
 		last_name,
@@ -22,6 +25,7 @@ export const ClientRegister = () => {
 	const onCreatedClient = (e) => {
 		e.preventDefault()
 		dispatch(startCreateUser(formState))
+		navigate('/client')
 	}
 
 
@@ -86,9 +90,11 @@ export const ClientRegister = () => {
 						id="suscription">
 						<option defaultChecked disabled
 						className="text-sm font-bold disabled:text-slate-700" value="none">--Selecciona plan--</option>
-						<option className="text-sm font-bold" value="Basica">Basica</option>
-						<option className="text-sm font-bold" value="Pro">Pro</option>
-						<option className="text-sm font-bold" value="Avanzada">Avanzada</option>
+						{
+							planes.map( plan => (
+								<option key={plan.id} className="text-sm font-bold" value={plan.name}>{plan.name}</option>
+							))
+						}
 					</select>
 					<input className="bg-black text-white p-4 text-2xl font-bold w-52 mb-5 rounded-md" type="submit" value="Crear Cliente" />
 				</div>

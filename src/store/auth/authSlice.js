@@ -14,9 +14,19 @@ export const authSlice = createSlice({
 	},
 
 	reducers: {
-		login: (state, {payload}) => {}
+		login: (state) => {
+			state.status = AUTH_STATUS.AUTHENTICATED
+		},
+		logout: (state) => {
+			state.status = AUTH_STATUS.NOT_AUTHENTICATED
+			state.uid = null
+			state.displayName = null
+			state.photoURL = null
+			state.email = null
+			state.errorMessage = null
+		}
 	},
 });
 
 
-export const { login } = authSlice.actions;
+export const { login, logout } = authSlice.actions;
