@@ -1,4 +1,11 @@
-export const CardPlan = ({price,name='Plan Name',beneficios=[]}) => {
+import { useDispatch } from "react-redux"
+import { startDeletePlan } from "../../store/gymstack/thunks"
+
+export const CardPlan = ({price,name='Plan Name',beneficios=[], id}) => {
+	const dispatch = useDispatch()
+	const onDelete = () => {
+		dispatch(startDeletePlan(id))
+	}
   return (
 	<article 
 		className="flex flex-col sm:flex-row justify-center items-center border rounded-md p-4 bg-slate-600">
@@ -13,6 +20,10 @@ export const CardPlan = ({price,name='Plan Name',beneficios=[]}) => {
 				))
 			}
 		</ul>
+		<button 
+			className="bg-red-500 py-2 px-4 font-bold rounded-md text-lg"
+			onClick={onDelete}	
+		>borrar</button>
 	</article>
   )
 }	

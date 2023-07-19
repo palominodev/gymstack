@@ -1,10 +1,10 @@
-import { addDoc, collection, getDocs } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore"
 import { FirebaseDB } from "../firebase/config"
 
 export const getUsers = async(uid) => {
 	const users = []
 	const querySnapshot = await getDocs(collection(FirebaseDB,`gymlocals/${uid}/clients`));
-	querySnapshot.forEach((doc) => {
+	querySnapshot.forEach(doc => {
 		users.push({
 			uid: doc.id,
 			...doc.data()
@@ -22,7 +22,8 @@ export const saveUser = async({user,uid}) => {
 
 export const getPlans = async(uid) => {
 	const plans = []
-	const querySnapshot = await getDocs(collection(FirebaseDB, `gymlocals/${uid}/plans`));
+	const querySnapshot = await getDocs(collection(FirebaseDB,`gymlocals/${uid}/plans`));
+	console.log(`gymlocals/${uid}/plans`)
 	querySnapshot.forEach(doc => {
 		plans.push({
 			id: doc.id,
@@ -34,6 +35,12 @@ export const getPlans = async(uid) => {
 }
 
 export const savePlan = async({plan,uid}) => {
-	const docRef = await addDoc(collection(FirebaseDB,`gymlocals/${uid}/plans`), plan)
-	console.log(`usuario guardado en DB: ${docRef.id}`);
+	// const docRef = await addDoc(collection(FirebaseDB,`gymlocals/${uid}/plans`), plan)
+	await setDoc(doc(FirebaseDB, `gymlocals/${uid}/plans`, plan.id), plan)
+	// console.log(`plan guardado en DB: ${docRef.id}`);
+}
+
+export const deletePlan = async({uid,id}) => {
+	await deleteDoc(doc(FirebaseDB, `gymlocals/${uid}/plans`, id))
+	console.log('Plan eliminado');
 }

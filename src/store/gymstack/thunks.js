@@ -1,7 +1,6 @@
-import { createPlan, createUser, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
-// import users from "../../api/users.json"
-// import plans from "../../api/planes.json"
-import { getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
+import { createPlan, createUser, removePlan, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
+import {v4 as uuidv4} from 'uuid'
+import { deletePlan, getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
 
 export const startGetUsers = () => {
 	return async (dispatch, getState) => {
@@ -13,8 +12,9 @@ export const startGetUsers = () => {
 }
 
 export const startGetPlans = () => {
-	return async (dispatch) => {
-		const plans = await getPlans()
+	return async (dispatch, getState) => {
+		const {uid} = getState().auth
+		const plans = await getPlans(uid)
 		dispatch(setPlans(plans))
 		dispatch(setCountPlans())
 	}
@@ -44,11 +44,19 @@ export const startCreatePlan = (formState) => {
 		const { uid } = getState().auth
 		delete formState.ok
 		const plan = {
-			id: Date.now(),
+			id: uuidv4(),
 			...formState,
 		}
 		console.log(plan);
 		dispatch(createPlan(plan))
 		await savePlan({plan,uid})
+	}
+}
+
+export const startDeletePlan = (id) => {
+	return async(dispatch, getState) => {
+		const {uid} = getState().auth
+		await deletePlan({id, uid})
+		dispatch(removePlan(id))
 	}
 }
