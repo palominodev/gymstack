@@ -1,4 +1,4 @@
-export const CardPlan = ({price,name='Plan Name',beneficios}) => {
+export const CardPlan = ({price,name='Plan Name',beneficios=[]}) => {
   return (
 	<article 
 		className="flex flex-col sm:flex-row justify-center items-center border rounded-md p-4 bg-slate-600">
