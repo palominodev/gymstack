@@ -1,6 +1,6 @@
-import { createPlan, createUser, removePlan, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
+import { createPlan, createUser, removePlan, removeUser, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
 import {v4 as uuidv4} from 'uuid'
-import { deletePlan, getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
+import { deletePlan, deleteUser, getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
 
 export const startGetUsers = () => {
 	return async (dispatch, getState) => {
@@ -24,7 +24,7 @@ export const startCreateUser = (formState) => {
 	return async (dispatch, getState) => {
 		const { uid } = getState().auth
 		const user = {
-			uid: Date.now(),
+			uid: uuidv4(),
 			...formState,
 			vence: "12-09-24",
 			type: formState.suscription,
@@ -47,7 +47,6 @@ export const startCreatePlan = (formState) => {
 			id: uuidv4(),
 			...formState,
 		}
-		console.log(plan);
 		dispatch(createPlan(plan))
 		await savePlan({plan,uid})
 	}
@@ -58,5 +57,13 @@ export const startDeletePlan = (id) => {
 		const {uid} = getState().auth
 		await deletePlan({id, uid})
 		dispatch(removePlan(id))
+	}
+}
+
+export const startDeleteUser = (id) => {
+	return async(dispatch,getState) => {
+		const {uid} = getState().auth
+		await deleteUser({uid,id})
+		dispatch(removeUser(id))
 	}
 }

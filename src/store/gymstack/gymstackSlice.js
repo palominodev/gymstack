@@ -35,9 +35,12 @@ export const gymstackSlice = createSlice({
 		},
 		removePlan: (state, {payload}) => {
 			state.planes = state.planes.filter( plan => plan.id !== payload)
+		},
+		removeUser: (state,{payload}) => {
+			state.users = state.users.filter( user => user.uid !== payload)
 		}
 	},
 });
 
 
-export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan, removePlan } = gymstackSlice.actions;
+export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan, removePlan, removeUser } = gymstackSlice.actions;

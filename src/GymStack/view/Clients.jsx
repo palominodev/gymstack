@@ -14,7 +14,6 @@ export const Clients = () => {
   useEffect(() => {
     if(users.length === 0) {
       dispatch(startGetUsers())
-      console.log('set Users')
     }
   }, [])
 
@@ -53,6 +52,7 @@ export const Clients = () => {
               <th className="border p-3">Suscripcion</th>
               <th className="border p-3">Vence</th>
               <th className="border p-3">Estado</th>
+              <th className="border p-3">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -66,12 +66,6 @@ export const Clients = () => {
               ))
               
             }
-            {/* <RowTableUser />
-            <RowTableUser />
-            <RowTableUser />
-            <RowTableUser />
-            <RowTableUser />
-            <RowTableUser /> */}
           </tbody>
         </table>
       </section>
