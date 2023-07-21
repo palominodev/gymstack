@@ -1,8 +1,10 @@
 import { useBgColor } from "../../hooks/useBgColor"
+import { BtnActualizarSus } from "./BtnActualizarSus"
+import { BtnRegistrar } from "./BtnRegistrar"
 import { CounterDays } from "./CounterDays"
 import { StatusTag } from "./StatusTag"
 
-export const SearchItem = ({ name, suscription, isValid = null, complete_day, total_days }) => {
+export const SearchItem = ({ name, id, suscription, isValid = null, complete_day, total_days }) => {
 
 	const {color_soft} = useBgColor(isValid)
 
@@ -12,6 +14,14 @@ export const SearchItem = ({ name, suscription, isValid = null, complete_day, to
 			<p>Tipo: <span className="font-bold">{suscription}</span></p>
 			<div className="flex justify-between gap-3 items-center">
 				<StatusTag isValid={isValid} />
+				{
+					(isValid === 'valid')
+					? <BtnRegistrar id={id} />
+					: (isValid === 'full')
+						? <button>Asistencia completa</button>
+						: <BtnActualizarSus />
+					
+				}
 				<button className="bg-neutral-950 p-2 text-white rounded-md">
 					{
 						(isValid === 'valid')

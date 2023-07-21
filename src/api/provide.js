@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDocs, increment, serverTimestamp, setDoc, updateDoc } from "firebase/firestore"
 import { FirebaseDB } from "../firebase/config"
 
 export const getUsers = async(uid) => {
@@ -39,4 +39,11 @@ export const deletePlan = async({uid,id}) => {
 
 export const deleteUser = async({uid,id}) => {
 	await deleteDoc(doc(FirebaseDB, `gymlocals/${uid}/clients`, id))
+}
+
+export const addCounterDays = async({uid,id}) => {
+	await updateDoc(doc(FirebaseDB, `gymlocals/${uid}/clients`, id), {
+		complete_days: increment(1),
+		timestamp: serverTimestamp()
+	})
 }

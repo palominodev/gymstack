@@ -16,6 +16,7 @@ export const SearchContainer = ({ searchUsers, inputSearch }) => {
 					: searchUsers.map(item => (
 						<SearchItem
 							key={item.uid}
+							id={item.uid}
 							complete_day={item.complete_days}
 							total_days={item.total_days}
 							isValid={item.status}

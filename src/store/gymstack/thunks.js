@@ -1,6 +1,6 @@
 import { createPlan, createUser, removePlan, removeUser, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
 import {v4 as uuidv4} from 'uuid'
-import { deletePlan, deleteUser, getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
+import { addCounterDays, deletePlan, deleteUser, getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
 
 export const startGetUsers = () => {
 	return async (dispatch, getState) => {
@@ -65,5 +65,13 @@ export const startDeleteUser = (id) => {
 		const {uid} = getState().auth
 		await deleteUser({uid,id})
 		dispatch(removeUser(id))
+	}
+}
+
+export const startAddCounterDays = (id) => {
+	return async(dispatch, getState) => {
+		const {uid} = getState().auth
+		await addCounterDays({uid,id})
+		console.log("Usuario Actualizado");
 	}
 }
