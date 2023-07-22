@@ -1,40 +1,40 @@
+import { useEffect, useState } from "react"
 import { useBgColor } from "../../hooks/useBgColor"
 import { BtnActualizarSus } from "./BtnActualizarSus"
 import { BtnRegistrar } from "./BtnRegistrar"
 import { CounterDays } from "./CounterDays"
 import { StatusTag } from "./StatusTag"
+import { BtnFull } from "./BtnFull"
 
 export const SearchItem = ({ name, id, suscription, isValid, complete_day, total_days }) => {
 
+	const [isValidState, setIsValidState] = useState(isValid)
+	const {color_soft} = useBgColor(isValidState)
 
-	const {color_soft} = useBgColor(isValid)
+	useEffect(() => {
+		if(complete_day === total_days){
+			setIsValidState('full')
+			return
+		}
+	}, [complete_day])
 
 	return (
 		<div className={`${color_soft} shadow-lg shadow-orange-700 mt-3 p-3 rounded-md`}>
 			<p className="text-lg">{name}</p>
 			<p>Tipo: <span className="font-bold">{suscription}</span></p>
 			<div className="flex justify-between gap-3 items-center">
-				<StatusTag isValid={isValid} />
+				<StatusTag isValid={isValidState} />
 				{
-					(isValid === 'valid')
+					(isValidState === 'valid')
 					? <BtnRegistrar id={id} />
-					: (isValid === 'full')
-						? <button>Asistencia completa</button>
+					: (isValidState === 'full')
+						? <BtnFull />
 						: <BtnActualizarSus />
 					
 				}
-				<button className="bg-neutral-950 p-2 text-white rounded-md">
-					{
-						(isValid === 'valid')
-							? 'Registar Asistencia'
-							: (isValid === 'full')
-								? 'Asistencias completas'
-								: 'Actualizar Suscripcion'
-					}
-				</button>
 			</div>
 			<div>
-				<CounterDays complete_day={complete_day} total_days={total_days} isValid={isValid} />
+				<CounterDays complete_day={complete_day} total_days={total_days} isValid={isValidState} />
 			</div>
 		</div>
 	)
