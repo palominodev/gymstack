@@ -4,7 +4,8 @@ import { BtnRegistrar } from "./BtnRegistrar"
 import { CounterDays } from "./CounterDays"
 import { StatusTag } from "./StatusTag"
 
-export const SearchItem = ({ name, id, suscription, isValid = null, complete_day, total_days }) => {
+export const SearchItem = ({ name, id, suscription, isValid, complete_day, total_days }) => {
+
 
 	const {color_soft} = useBgColor(isValid)
 

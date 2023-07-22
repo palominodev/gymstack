@@ -38,9 +38,23 @@ export const gymstackSlice = createSlice({
 		},
 		removeUser: (state,{payload}) => {
 			state.users = state.users.filter( user => user.uid !== payload)
+		},
+		addCounterCompleteDays: ( state, {payload} ) => {
+			state.users = state.users.map( user => {
+				if(user.uid === payload){
+					user.complete_days+=1
+				}
+				return user
+			})
+			state.searchUsers = state.searchUsers.map( user => {
+				if(user.uid === payload){
+					user.complete_days+=1
+				}
+				return user
+			})
 		}
 	},
 });
 
 
-export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan, removePlan, removeUser } = gymstackSlice.actions;
+export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan, removePlan, removeUser,addCounterCompleteDays } = gymstackSlice.actions;

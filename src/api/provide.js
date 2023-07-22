@@ -1,13 +1,23 @@
-import { collection, deleteDoc, doc, getDocs, increment, serverTimestamp, setDoc, updateDoc } from "firebase/firestore"
+import { arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore"
 import { FirebaseDB } from "../firebase/config"
+import { isAfter } from "date-fns";
+import { lunesPasadoMasProximo } from "./helpers/isMonday";
+import { registerToday } from "./helpers/registerToday";
 
 export const getUsers = async(uid) => {
 	const users = []
+	const lunesPasado = lunesPasadoMasProximo()
 	const querySnapshot = await getDocs(collection(FirebaseDB,`gymlocals/${uid}/clients`));
 	querySnapshot.forEach(doc => {
+		const asistencias = doc.data().asistencias?.filter(item => (
+			isAfter(new Date(item), lunesPasado)
+		))
+
 		users.push({
+			...doc.data(),
 			uid: doc.id,
-			...doc.data()
+			asistencias: asistencias || [],
+			complete_days: asistencias?.length || 0
 		})
 	});
 	return users
@@ -42,8 +52,13 @@ export const deleteUser = async({uid,id}) => {
 }
 
 export const addCounterDays = async({uid,id}) => {
-	await updateDoc(doc(FirebaseDB, `gymlocals/${uid}/clients`, id), {
-		complete_days: increment(1),
-		timestamp: serverTimestamp()
-	})
+	const docRef = doc(FirebaseDB, `gymlocals/${uid}/clients`, id)
+	const snapshot = await getDoc(docRef)
+	const registerSameDay = registerToday({asistencias: snapshot.data().asistencias})
+	if(registerSameDay.ok) {
+		await updateDoc(docRef, {
+			asistencias: arrayUnion(new Date().toString())
+		})
+	}
+	return registerSameDay
 }
