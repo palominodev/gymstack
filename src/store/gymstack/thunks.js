@@ -1,6 +1,7 @@
 import { addCounterCompleteDays, createPlan, createUser, removePlan, removeUser, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
 import {v4 as uuidv4} from 'uuid'
 import { addCounterDays, deletePlan, deleteUser, getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
+import Swal from "sweetalert2"
 
 export const startGetUsers = () => {
 	return async (dispatch, getState) => {
@@ -70,10 +71,28 @@ export const startDeleteUser = (id) => {
 
 export const startAddCounterDays = (id) => {
 	return async(dispatch, getState) => {
-		const {uid} = getState().auth
-		const { ok } = await addCounterDays({uid,id})
-		if(ok) {
-			dispatch(addCounterCompleteDays(id))
+
+		const { uid } = getState().auth
+		Swal.fire({
+			title: 'Cargando...',
+			text: 'Registrando asistencia',
+			allowOutsideClick: false,
+			showConfirmButton: false
+		})
+		const { ok, message } = await addCounterDays({ uid, id })
+		if(!ok) {
+			Swal.fire({
+				icon: 'error',
+				title: 'Error',
+				text: message
+			})
+			return 
 		}
+		dispatch(addCounterCompleteDays(id))
+		Swal.fire({
+			icon: "success",
+			title: "Registro",
+			text: message
+		})
 	}
 }

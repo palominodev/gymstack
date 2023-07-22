@@ -4,7 +4,7 @@ export const registerToday = ({asistencias}) => {
 	if(!asistencias) {
 		return {
 			ok: true,
-			message: 'Asistencias del usuario registrada'
+			message: 'Asistencia del usuario registrada'
 		}
 	}
 
@@ -14,12 +14,12 @@ export const registerToday = ({asistencias}) => {
 	if(isSameDay(new Date(lastRegister), today)){
 		return {
 			ok: false,
-			message: 'Ya registraste la asistencias de este usuario hoy'
+			message: 'Ya registraste la asistencia de este usuario hoy'
 		}
 	}
 	return {
 		ok: true,
-		message: 'Asistencias del usuario registrada'
+		message: 'Asistencia del usuario registrada'
 	}
 	
 }
