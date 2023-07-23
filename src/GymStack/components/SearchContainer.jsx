@@ -15,6 +15,7 @@ export const SearchContainer = ({ searchUsers, inputSearch }) => {
 					? <p className="text-2xl text-center opacity-75">No hay coincidencia</p>
 					: searchUsers.map(item => (
 						<SearchItem
+							{...item}
 							key={item.uid}
 							id={item.uid}
 							complete_day={item.complete_days}

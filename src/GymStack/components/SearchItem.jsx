@@ -6,7 +6,7 @@ import { CounterDays } from "./CounterDays"
 import { StatusTag } from "./StatusTag"
 import { BtnFull } from "./BtnFull"
 
-export const SearchItem = ({ name, id, suscription, isValid, complete_day, total_days }) => {
+export const SearchItem = ({ name, last_name, id, suscription, isValid, complete_day, total_days }) => {
 
 	const [isValidState, setIsValidState] = useState(isValid)
 	const {color_soft} = useBgColor(isValidState)
@@ -20,7 +20,7 @@ export const SearchItem = ({ name, id, suscription, isValid, complete_day, total
 
 	return (
 		<div className={`${color_soft} shadow-lg shadow-orange-700 mt-3 p-3 rounded-md`}>
-			<p className="text-lg">{name}</p>
+			<p className="text-lg">{name} {last_name}</p>
 			<p>Tipo: <span className="font-bold">{suscription}</span></p>
 			<div className="flex justify-between gap-3 items-center">
 				<StatusTag isValid={isValidState} />

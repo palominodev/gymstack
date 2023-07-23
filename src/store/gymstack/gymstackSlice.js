@@ -25,7 +25,10 @@ export const gymstackSlice = createSlice({
 			state.activePlans = state.planes.length
 		},
 		searchUsersByName: (state, {payload}) => {
-			state.searchUsers = state.users.filter( user => user.name.toLowerCase().includes(payload.toLowerCase().trim()))
+			state.searchUsers = state.users.filter( user => {
+				const fullName = `${user.name} ${user.last_name}`
+				return fullName.toLowerCase().includes(payload.toLowerCase().trim())
+			})
 		},
 		createUser: (state, {payload}) => {
 			state.users = [...state.users, payload]
