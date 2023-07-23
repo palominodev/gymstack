@@ -2,6 +2,7 @@ import { addCounterCompleteDays, createPlan, createUser, removePlan, removeUser,
 import {v4 as uuidv4} from 'uuid'
 import { addCounterDays, deletePlan, deleteUser, getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
 import Swal from "sweetalert2"
+import { addMonths, format } from "date-fns"
 
 export const startGetUsers = () => {
 	return async (dispatch, getState) => {
@@ -24,16 +25,18 @@ export const startGetPlans = () => {
 export const startCreateUser = (formState) => {
 	return async (dispatch, getState) => {
 		const { uid } = getState().auth
+		const { month_durations, name } = JSON.parse(formState.suscription)
+		const month = addMonths(new Date(), month_durations)
 		const user = {
 			uid: uuidv4(),
 			...formState,
-			vence: "12-09-24",
-			type: formState.suscription,
+			vence: format(month, 'dd/MM/yy'),
+			type: name,
 			status: "valid",
 			complete_days: 0,
 			total_days: 5
 		}
-
+		delete user.suscription
 		dispatch(createUser(user))
 		await saveUser({user, uid})
 

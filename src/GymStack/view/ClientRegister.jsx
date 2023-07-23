@@ -92,7 +92,7 @@ export const ClientRegister = () => {
 						className="text-sm font-bold disabled:text-slate-700" value="none">--Selecciona plan--</option>
 						{
 							planes.map( plan => (
-								<option key={plan.id} className="text-sm font-bold" value={plan.name}>{plan.name}</option>
+								<option key={plan.id} className="text-sm font-bold" value={JSON.stringify(plan)}>{plan.name} - {plan.month_durations} meses</option>
 							))
 						}
 					</select>
