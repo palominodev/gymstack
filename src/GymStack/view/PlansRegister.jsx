@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom"
 export const PlansRegister = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const {ok,formState,name,daysForWeek,price,beneficios,onInputChange, addBeneficio, addField} = useForm({
+	const {ok, month_durations,formState,name,daysForWeek,price,beneficios,onInputChange, addBeneficio, addField} = useForm({
 		ok: false,
 		name:'',
 		price: '',
-		month_durations: '',
+		month_durations: 'none',
 		daysForWeek: '',
 		beneficios: []
 	})
@@ -91,9 +91,11 @@ export const PlansRegister = () => {
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="month_durations">Meses de duracion</label>
 					<select 
 						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
+						defaultValue={month_durations}
 						onChange={onInputChange} 
 						name="month_durations" 
 						id="month_durations">
+						<option disabled value="none">--Selecciona el mes--</option>
 						<option value="1">1 mes</option>
 						<option value="2">2 meses</option>
 						<option value="3">3 meses</option>

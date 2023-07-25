@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import { useBgColor } from "../../hooks/useBgColor"
 import { BtnActualizarSus } from "./BtnActualizarSus"
@@ -5,8 +6,9 @@ import { BtnRegistrar } from "./BtnRegistrar"
 import { CounterDays } from "./CounterDays"
 import { StatusTag } from "./StatusTag"
 import { BtnFull } from "./BtnFull"
+import { isDeprecated } from "../helpers/isDeprecated"
 
-export const SearchItem = ({ name, last_name, id, suscription, isValid, complete_day, total_days }) => {
+export const SearchItem = ({ name,vence, last_name, id, suscription, isValid, complete_day, total_days }) => {
 
 	const [isValidState, setIsValidState] = useState(isValid)
 	const {color_soft} = useBgColor(isValidState)
@@ -16,6 +18,11 @@ export const SearchItem = ({ name, last_name, id, suscription, isValid, complete
 			setIsValidState('full')
 			return
 		}
+		if(isDeprecated(vence)){
+			setIsValidState('deprecated')
+			return
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [complete_day])
 
 	return (
@@ -29,7 +36,7 @@ export const SearchItem = ({ name, last_name, id, suscription, isValid, complete
 					? <BtnRegistrar id={id} />
 					: (isValidState === 'full')
 						? <BtnFull />
-						: <BtnActualizarSus />
+						: <BtnActualizarSus vence={vence} id={id} />
 					
 				}
 			</div>

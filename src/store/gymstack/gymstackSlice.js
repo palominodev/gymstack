@@ -55,9 +55,25 @@ export const gymstackSlice = createSlice({
 				}
 				return user
 			})
+		},
+		addMonthsSuscription: (state, {payload}) => {
+			state.users = state.users.map(user => {
+				if(user.uid === payload.id) {
+					user.type = payload.type
+					user.vence = payload.vence
+				}
+				return user
+			})
+			state.searchUsers = state.searchUsers.map(user => {
+				if(user.uid === payload.id) {
+					user.type = payload.type
+					user.vence = payload.vence
+				}
+				return user
+			})
 		}
 	},
 });
 
 
-export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan, removePlan, removeUser,addCounterCompleteDays } = gymstackSlice.actions;
+export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan, removePlan, removeUser,addCounterCompleteDays, addMonthsSuscription } = gymstackSlice.actions;

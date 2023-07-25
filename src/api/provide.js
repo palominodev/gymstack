@@ -62,3 +62,11 @@ export const addCounterDays = async({uid,id}) => {
 	}
 	return registerSameDay
 }
+
+export const updateSuscription = async({uid,id,vence,name}) => {
+	const docRef = doc(FirebaseDB, `gymlocals/${uid}/clients`, id)
+	await updateDoc(docRef, {
+		vence,
+		type: name
+	})
+}

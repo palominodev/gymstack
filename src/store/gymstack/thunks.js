@@ -1,8 +1,9 @@
-import { addCounterCompleteDays, createPlan, createUser, removePlan, removeUser, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
+import { addCounterCompleteDays, addMonthsSuscription, createPlan, createUser, removePlan, removeUser, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
 import {v4 as uuidv4} from 'uuid'
-import { addCounterDays, deletePlan, deleteUser, getPlans, getUsers, savePlan, saveUser } from "../../api/provide"
+import { addCounterDays, deletePlan, deleteUser, getPlans, getUsers, savePlan, saveUser, updateSuscription } from "../../api/provide"
 import Swal from "sweetalert2"
 import { addMonths } from "date-fns"
+import { newVence } from "../../api/helpers/newVence"
 
 export const startGetUsers = () => {
 	return async (dispatch, getState) => {
@@ -96,6 +97,26 @@ export const startAddCounterDays = (id) => {
 			icon: "success",
 			title: "Registro",
 			text: message
+		})
+	}
+}
+
+export const startUpdateSuscription = ({type,vence,id}) => {
+	return async(dispatch, getState) => {
+		const { uid } = getState().auth
+		Swal.fire({
+			title: 'Cargando...',
+			text: 'Registrando asistencia',
+			allowOutsideClick: false,
+			showConfirmButton: false
+		})
+		const {month_durations:months,name} = JSON.parse(type)
+		const newTimeSuscription = newVence({months: Number(months),vence})
+		await updateSuscription({uid,id,name, vence: newTimeSuscription})
+		dispatch(addMonthsSuscription({id,type: name, vence: newTimeSuscription}))
+		Swal.fire({
+			icon: "success",
+			title: "Actualizado",
 		})
 	}
 }

@@ -2,14 +2,25 @@ import { useDispatch } from "react-redux"
 import { StatusTag } from "./StatusTag"
 import { startDeleteUser } from "../../store/gymstack/thunks"
 import { stringToDate } from "../helpers/stringToDate"
+import { useEffect, useState } from "react"
+import { isDeprecated } from "../helpers/isDeprecated"
 
-export const RowTableUser = ({ uid, name, last_name, phone, email, type, vence, status }) => {
+export const RowTableUser = ({complete_days, total_days, uid, name, last_name, phone, email, type, vence, status }) => {
 
+	const [isValid, setIsValid] = useState(status)
 	const dispatch = useDispatch()
 	const onDelete = () => {
 		dispatch(startDeleteUser(uid))
-
 	}
+
+	useEffect(() => {
+		if(complete_days === total_days) {
+			setIsValid('full')
+		}
+		if(isDeprecated(vence)){
+			setIsValid('full')
+		}
+	},[vence]) 
 	return (
 		<tr className="even:bg-neutral-700">
 			<td className="border p-3" >{uid}</td>
@@ -19,7 +30,7 @@ export const RowTableUser = ({ uid, name, last_name, phone, email, type, vence, 
 			<td className="border p-3" >{email}</td>
 			<td className="border p-3" >{type}</td>
 			<td className="border p-3" >{stringToDate(vence)}</td>
-			<td className="border p-3" ><StatusTag isValid={status} /></td>
+			<td className="border p-3" ><StatusTag isValid={isValid} /></td>
 			<td className="border p-3" >
 				<button
 					className="bg-red-500 py-2 px-4 rounded-md font-bold"

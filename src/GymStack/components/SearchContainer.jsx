@@ -1,6 +1,6 @@
 import { SearchItem } from "./SearchItem"
 
-export const SearchContainer = ({ searchUsers, inputSearch }) => {
+export const SearchContainer = ({ searchUsers=[], inputSearch='' }) => {
 	const QUERY = {
 		initial: (inputSearch === ''),
 		none: (inputSearch?.length >= 2 && searchUsers?.length === 0)
