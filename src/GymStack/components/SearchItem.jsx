@@ -26,7 +26,7 @@ export const SearchItem = ({ name,vence, last_name, id, suscription, isValid, co
 	}, [complete_day])
 
 	return (
-		<div className={`${color_soft} shadow-lg shadow-orange-700 mt-3 p-3 rounded-md`}>
+		<div className={`${color_soft} justify-self-center self-start shadow-lg shadow-orange-700 p-3 rounded-md h-auto sm:h-36 w-full sm:w-80`}>
 			<p className="text-lg">{name} {last_name}</p>
 			<p>Tipo: <span className="font-bold">{suscription}</span></p>
 			<div className="flex justify-between gap-3 items-center">

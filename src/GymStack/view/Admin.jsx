@@ -30,7 +30,7 @@ export const Admin = () => {
         <PlanCardInfo />
       </article>
     </section>
-    <section className="flex justify-end mt-6">
+    <section className="flex justify-end mt-2">
       {/* TODO: Mostrar la ganancias en un nuevo componente */}
       {/* <AccountMoneyCard /> */}
 

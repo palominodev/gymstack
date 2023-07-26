@@ -7,7 +7,8 @@ export const SearchContainer = ({ searchUsers=[], inputSearch='' }) => {
 	}
 
 	return (
-		<section className="h-80 overflow-auto mt-4">
+		<section 
+			className="h-80 overflow-auto mt-4 grid grid-cols-3 gap-4 justify-center">
 			{
 				(QUERY.initial)
 				? <p className="text-2xl text-center opacity-75">Empieza a buscar</p>
