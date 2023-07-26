@@ -24,9 +24,11 @@ export const Admin = () => {
 
   return (
 	<main className="px-4 pt-6 pb-4">
-    <section className="flex gap-2" >
-      <UserCardInfo />
-      <PlanCardInfo />
+    <section className="flex gap-2 justify-center" >
+      <article className="flex gap-2 w-full sm:w-3/4">
+        <UserCardInfo />
+        <PlanCardInfo />
+      </article>
     </section>
     <section className="flex justify-end mt-6">
       {/* TODO: Mostrar la ganancias en un nuevo componente */}
