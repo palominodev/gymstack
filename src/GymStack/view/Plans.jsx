@@ -24,7 +24,7 @@ export const Plans = () => {
 					Crear nuevo
 				</button>
 			</div>
-			<section className="grid justify-center grid-cols-3 gap-4">
+			<section className="grid justify-center place-content-center grid-cols-3 gap-4">
 				{
 					planes.map(plan => (
 						<CardPlan key={plan.id}  {...plan}   />
