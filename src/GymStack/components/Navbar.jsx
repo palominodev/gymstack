@@ -38,7 +38,7 @@ export const Navbar = ({slide,setSlide}) => {
 			</ul>
 			<button
 				onClick={onLogout}
-				className={`relative flex items-center gap-4 sm:group-hover:w-3/4 sm:w-10 p-2 m-2 transition-all bg-black text-white rounded-md overflow-hidden`}>
+				className={`relative flex items-center gap-4 sm:group-hover:w-3/4 sm:w-10 p-2 m-2 mb-14 transition-all bg-black text-white rounded-md overflow-hidden`}>
 					<IoMdExit className="text-2xl" />
 					<span className="absolute left-14">Salir</span>
 			</button>
