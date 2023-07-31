@@ -35,7 +35,7 @@ export const ClientRegister = () => {
 			<form
 				onSubmit={onCreatedClient}
 			>
-				<h2 className="text-5xl font-bold my-6 text-center" >Registrar Cliente</h2>
+				<h2 className="text-5xl font-bold my-6 text-center text-white" >Registrar Cliente</h2>
 				<div className="flex flex-wrap justify-center">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="name">Nombre</label>
 					<input

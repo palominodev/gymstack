@@ -17,7 +17,7 @@ export const Plans = () => {
 	return (
 		<section className="p-3">
 			<div className="flex justify-between mb-4 flex-wrap">
-				<h2 className="text-5xl md:text-6xl font-bold" >Planes</h2>
+				<h2 className="text-5xl md:text-6xl font-bold text-white" >Planes</h2>
 				<button
 					onClick={() => navigate('/plans/new')}
 					className="mx-4 p-2 bg-orange-700 font-bold text-white rounded-md transition-all duration-300 hover:bg-orange-600 md:text-lg">

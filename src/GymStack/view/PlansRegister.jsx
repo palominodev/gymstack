@@ -49,7 +49,7 @@ export const PlansRegister = () => {
 			<form
 				onSubmit={onCreatePlan}
 			>
-				<h2 className="text-6xl font-bold text-center my-6">Crear Plan</h2>
+				<h2 className="text-6xl font-bold text-center my-6 text-white">Crear Plan</h2>
 				<div className="flex flex-wrap justify-center">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="name">Nombre del plan</label>
 					<input
