@@ -4,13 +4,32 @@ import { startDeleteUser } from "../../store/gymstack/thunks"
 import { stringToDate } from "../helpers/stringToDate"
 import { useEffect, useState } from "react"
 import { isDeprecated } from "../helpers/isDeprecated"
+import Swal from "sweetalert2"
 
 export const RowTableUser = ({complete_days, total_days, uid, name, last_name, phone, email, type, vence, status }) => {
 
 	const [isValid, setIsValid] = useState(status)
 	const dispatch = useDispatch()
 	const onDelete = () => {
-		dispatch(startDeleteUser(uid))
+		Swal.fire({
+			icon: "question" ,
+			title: `¿Estas seguro que desear borrar a ${name} ${last_name}?`,
+			text: 'Todas la informacion de este usuario será eliminada para siempre',
+			showConfirmButton: true,
+			confirmButtonText: `Si, eliminar`,
+			confirmButtonColor: 'red',
+			showCancelButton: true,
+			cancelButtonColor: 'Cancelar',
+		}).then( result => {
+			if(result.isConfirmed) {
+				dispatch(startDeleteUser(uid))
+				Swal.fire({
+					title: `${name} fue borrado`,
+					showConfirmButton: false,
+					timer: 1000
+				})
+			}
+		})
 	}
 
 	useEffect(() => {
