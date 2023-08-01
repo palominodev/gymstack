@@ -14,12 +14,12 @@ export const SearchItem = ({ name,vence, last_name, id, suscription, isValid, co
 	const {color_soft} = useBgColor(isValidState)
 
 	useEffect(() => {
-		if(complete_day === total_days){
-			setIsValidState('full')
-			return
-		}
 		if(isDeprecated(vence)){
 			setIsValidState('deprecated')
+			return
+		}
+		if(complete_day === total_days){
+			setIsValidState('full')
 			return
 		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps

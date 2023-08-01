@@ -18,7 +18,7 @@ export const RowTableUser = ({complete_days, total_days, uid, name, last_name, p
 			setIsValid('full')
 		}
 		if(isDeprecated(vence)){
-			setIsValid('full')
+			setIsValid('deprecated')
 		}
 	},[vence]) 
 	return (
