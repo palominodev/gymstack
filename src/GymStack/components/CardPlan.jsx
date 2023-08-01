@@ -1,11 +1,35 @@
 import { useDispatch } from "react-redux"
 import { startDeletePlan } from "../../store/gymstack/thunks"
 import { FaTrash } from "react-icons/fa"
+import Swal from "sweetalert2"
 
 export const CardPlan = ({ price, name = 'Plan Name', beneficios = [], id }) => {
 	const dispatch = useDispatch()
 	const onDelete = () => {
-		dispatch(startDeletePlan(id))
+		Swal.fire({
+			icon: 'question',
+			title: '¿Estas seguro que deseas borrar este plan?',
+			showConfirmButton: true,
+			confirmButtonText: 'Si, eliminar plan',
+			confirmButtonColor: 'red',
+			showCancelButton: true
+		}).then(result => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					title: 'Eliminando...',
+					showConfirmButton: false,
+					allowOutsideClick: false,
+				})
+				dispatch(startDeletePlan(id))
+				Swal.fire({
+					icon: 'success',
+					title: 'Plan eliminado',
+					showConfirmButton: false,
+					timer: 1000
+				})
+			}
+		})
+		// 
 	}
 	return (
 		<article
