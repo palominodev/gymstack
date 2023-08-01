@@ -15,21 +15,9 @@ export const CardPlan = ({ price, name = 'Plan Name', beneficios = [], id }) => 
 			showCancelButton: true
 		}).then(result => {
 			if (result.isConfirmed) {
-				Swal.fire({
-					title: 'Eliminando...',
-					showConfirmButton: false,
-					allowOutsideClick: false,
-				})
 				dispatch(startDeletePlan(id))
-				Swal.fire({
-					icon: 'success',
-					title: 'Plan eliminado',
-					showConfirmButton: false,
-					timer: 1000
-				})
 			}
 		})
-		// 
 	}
 	return (
 		<article

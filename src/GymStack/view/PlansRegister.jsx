@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux"
 import { startCreatePlan } from "../../store/gymstack/thunks"
 import { useNavigate } from "react-router-dom"
 
-
 export const PlansRegister = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()

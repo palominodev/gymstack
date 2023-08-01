@@ -38,9 +38,20 @@ export const startCreateUser = (formState) => {
 			total_days: Number(daysForWeek)
 		}
 		delete user.suscription
+		Swal.fire({
+			title: 'Cargando...',
+			text: 'Creando Usuario',
+			allowOutsideClick: false,
+			showConfirmButton: false
+		})
 		dispatch(createUser(user))
 		await saveUser({user, uid})
-
+		Swal.fire({
+			icon: 'success',
+			title: 'Usuario creado exitosamente',
+			timer: 1000,
+			showConfirmButton: false,
+		})
 	}
 }
 
@@ -53,15 +64,38 @@ export const startCreatePlan = (formState) => {
 			...formState,
 		}
 		dispatch(createPlan(plan))
+		Swal.fire({
+			title: 'Cargando...',
+			text: 'Creando Plan',
+			allowOutsideClick: false,
+			showConfirmButton: false
+		})
 		await savePlan({plan,uid})
+		Swal.fire({
+			icon: 'success',
+			title: 'Plan creado exitosamente',
+			timer: 1000,
+			showConfirmButton: false,
+		})
 	}
 }
 
 export const startDeletePlan = (id) => {
 	return async(dispatch, getState) => {
 		const {uid} = getState().auth
+		Swal.fire({
+			title: 'Eliminando...',
+			showConfirmButton: false,
+			allowOutsideClick: false,
+		})
 		await deletePlan({id, uid})
 		dispatch(removePlan(id))
+		Swal.fire({
+			icon: 'success',
+			title: 'Plan eliminado',
+			showConfirmButton: false,
+			timer: 1000
+		})
 	}
 }
 
