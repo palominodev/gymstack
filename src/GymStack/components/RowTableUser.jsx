@@ -5,10 +5,12 @@ import { stringToDate } from "../helpers/stringToDate"
 import { useEffect, useState } from "react"
 import { isDeprecated } from "../helpers/isDeprecated"
 import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
 
 export const RowTableUser = ({complete_days, total_days, uid, name, last_name, phone, email, type, vence, status }) => {
 
 	const [isValid, setIsValid] = useState(status)
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const onDelete = () => {
 		Swal.fire({
@@ -32,6 +34,10 @@ export const RowTableUser = ({complete_days, total_days, uid, name, last_name, p
 		})
 	}
 
+	const onEdit = () => {
+		navigate(`/edit/${uid}`)
+	}
+
 	useEffect(() => {
 		if(complete_days === total_days) {
 			setIsValid('full')
@@ -51,12 +57,21 @@ export const RowTableUser = ({complete_days, total_days, uid, name, last_name, p
 			<td className="border p-3" >{stringToDate(vence)}</td>
 			<td className="border p-3" ><StatusTag isValid={isValid} /></td>
 			<td className="border p-3" >
-				<button
-					className="bg-red-500 py-2 px-4 rounded-md font-bold"
-					onClick={onDelete}
-				>
-					Borrar
-				</button>
+				<div className="flex gap-1">
+					<button
+						className="bg-red-500 py-2 px-4 rounded-md font-bold"
+						onClick={onDelete}
+					>
+						Borrar
+					</button>
+					<button
+						onClick={onEdit}
+						className="bg-amber-500 py-2 px-4 rounded-md font-bold"
+					>Editar</button>
+					{/* <button
+						className="bg-blue-600 py-2 px-4 rounded-md font-bold"
+					>Registro</button> */}
+				</div>
 			</td>
 		</tr>
 	)

@@ -62,6 +62,10 @@ export const deleteUser = async({uid,id}) => {
 	await deleteDoc(doc(FirebaseDB, `gymlocals/${uid}/clients`, id))
 }
 
+export const editUser = async({uid,user}) => {
+	await updateDoc(doc(FirebaseDB, `gymlocals/${uid}/clients`, user.uid), user)
+}
+
 export const addCounterDays = async({uid,id}) => {
 	const docRef = doc(FirebaseDB, `gymlocals/${uid}/clients`, id)
 	const snapshot = await getDoc(docRef)

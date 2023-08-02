@@ -42,6 +42,18 @@ export const gymstackSlice = createSlice({
 		removeUser: (state,{payload}) => {
 			state.users = state.users.filter( user => user.uid !== payload)
 		},
+		editUserState: (state, {payload}) => {
+			state.users = state.users.map( user => {
+				if(user.uid === payload.uid) {
+					const updateUser = {
+						...user,
+						...payload,
+					}
+					return updateUser
+				}
+				return user
+			})
+		},
 		addCounterCompleteDays: ( state, {payload} ) => {
 			state.users = state.users.map( user => {
 				if(user.uid === payload){
@@ -76,4 +88,4 @@ export const gymstackSlice = createSlice({
 });
 
 
-export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan, removePlan, removeUser,addCounterCompleteDays, addMonthsSuscription } = gymstackSlice.actions;
+export const { setUsers, setPlans,searchUsersByName, setActiveUsers,setCountPlans, createUser, createPlan, editUserState, removePlan, removeUser,addCounterCompleteDays, addMonthsSuscription } = gymstackSlice.actions;

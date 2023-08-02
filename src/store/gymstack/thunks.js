@@ -1,6 +1,6 @@
-import { addCounterCompleteDays, addMonthsSuscription, createPlan, createUser, removePlan, removeUser, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
+import { addCounterCompleteDays, addMonthsSuscription, createPlan, createUser, editUserState, removePlan, removeUser, setActiveUsers, setCountPlans, setPlans, setUsers } from "./gymstackSlice"
 import {v4 as uuidv4} from 'uuid'
-import { addCounterDays, deletePlan, deleteUser, getPlans, getUsers, savePlan, saveUser, updateSuscription } from "../../api/provide"
+import { addCounterDays, deletePlan, deleteUser, editUser, getPlans, getUsers, savePlan, saveUser, updateSuscription } from "../../api/provide"
 import Swal from "sweetalert2"
 import { addMonths } from "date-fns"
 import { newVence } from "../../api/helpers/newVence"
@@ -104,6 +104,25 @@ export const startDeleteUser = (id) => {
 		const {uid} = getState().auth
 		await deleteUser({uid,id})
 		dispatch(removeUser(id))
+	}
+}
+
+export const startEditUser = (formState) => {
+	return async(dispatch,getState) => {
+		const {uid} = getState().auth
+		Swal.fire({
+			title: 'Editando...',
+			showConfirmButton: false,
+			allowOutsideClick: false,
+		})
+		await editUser({uid,user:formState})
+		dispatch(editUserState(formState))
+		Swal.fire({
+			icon: 'success',
+			title: 'Cliente editado',
+			showConfirmButton: false,
+			timer: 1000
+		})
 	}
 }
 
