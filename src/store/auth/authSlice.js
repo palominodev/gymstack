@@ -18,13 +18,13 @@ export const authSlice = createSlice({
 			state.status = AUTH_STATUS.AUTHENTICATED
 			state.uid = payload?.uid
 		},
-		logout: (state) => {
+		logout: (state, {payload}) => {
 			state.status = AUTH_STATUS.NOT_AUTHENTICATED
 			state.uid = null
 			state.displayName = null
 			state.photoURL = null
 			state.email = null
-			state.errorMessage = null
+			state.errorMessage = payload
 		}
 	},
 });

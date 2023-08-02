@@ -7,16 +7,27 @@ import { useEffect } from "react"
 import { onAuthStateChanged } from "firebase/auth"
 import { FirebaseAuth } from "./firebase/config"
 import { login } from "./store/auth/authSlice"
+import Swal from "sweetalert2"
 
 export const AppRouter = () => {
 	const {status} = useSelector(state => state.auth)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
+		Swal.fire({
+			title: "Cargando...",
+			showConfirmButton: false,
+		})
 		onAuthStateChanged(FirebaseAuth, async(user) => {
-			if(!user) return
+			if(!user) return Swal.close()
 			const {uid} = user
 			dispatch(login({uid}))
+			Swal.fire({
+				icon: "success",
+				title: "Sesion guardada",
+				timer: 1000,
+				showConfirmButton: false
+			})
 		} )
 	},[])
 
