@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useDispatch, useSelector } from "react-redux"
 import { searchUsersByName } from "../../store/gymstack/gymstackSlice"
 import { SearchContainer } from "./SearchContainer"
@@ -21,7 +22,7 @@ export const UserAttendance = () => {
 
 
   return (
-    <article className="bg-orange-600 p-6 w-full sm:w-1/2 rounded-md">
+    <article className="bg-orange-600 p-6 w-full rounded-md">
       <form className="flex flex-wrap">
         <label className="block w-full text-center text-xl font-bold mb-2" htmlFor="search">Buscar Usuario</label>
         <input

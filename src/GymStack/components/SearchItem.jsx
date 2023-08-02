@@ -14,16 +14,18 @@ export const SearchItem = ({ name,vence, last_name, id, suscription, isValid, co
 	const {color_soft} = useBgColor(isValidState)
 
 	useEffect(() => {
-		if(isDeprecated(vence)){
-			setIsValidState('deprecated')
-			return
-		}
 		if(complete_day === total_days){
 			setIsValidState('full')
 			return
 		}
+		if(isDeprecated(vence)){
+			setIsValidState('deprecated')
+			return
+		}else{
+			setIsValidState('valid')
+		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [complete_day])
+	}, [complete_day,vence])
 
 	return (
 		<div className={`${color_soft} justify-self-center self-start shadow-lg shadow-orange-700 p-3 rounded-md h-auto sm:h-36 w-full sm:w-80`}>

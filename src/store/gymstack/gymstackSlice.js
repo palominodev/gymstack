@@ -73,6 +73,7 @@ export const gymstackSlice = createSlice({
 				if(user.uid === payload.id) {
 					user.type = payload.type
 					user.vence = payload.vence
+					user.status = 'valid'
 				}
 				return user
 			})
