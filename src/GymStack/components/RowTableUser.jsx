@@ -7,6 +7,7 @@ import { isDeprecated } from "../helpers/isDeprecated"
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
 
+// eslint-disable-next-line react/prop-types
 export const RowTableUser = ({complete_days, total_days, uid, name, last_name, phone, email, type, vence, status }) => {
 
 	const [isValid, setIsValid] = useState(status)
@@ -25,11 +26,6 @@ export const RowTableUser = ({complete_days, total_days, uid, name, last_name, p
 		}).then( result => {
 			if(result.isConfirmed) {
 				dispatch(startDeleteUser(uid))
-				Swal.fire({
-					title: `${name} fue borrado`,
-					showConfirmButton: false,
-					timer: 1000
-				})
 			}
 		})
 	}

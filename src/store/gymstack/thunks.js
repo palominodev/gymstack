@@ -102,8 +102,19 @@ export const startDeletePlan = (id) => {
 export const startDeleteUser = (id) => {
 	return async(dispatch,getState) => {
 		const {uid} = getState().auth
+		Swal.fire({
+			title: 'Borrando usuario...',
+			showConfirmButton: false,
+			allowOutsideClick: false,
+		})
 		await deleteUser({uid,id})
 		dispatch(removeUser(id))
+		Swal.fire({
+			icon: 'success',
+			title: 'Usuario borrado exitosamente',
+			showConfirmButton: false,
+			timer: 1000
+		})
 	}
 }
 

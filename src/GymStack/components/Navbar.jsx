@@ -5,7 +5,8 @@ import { FaHome, FaUsers } from 'react-icons/fa'
 import { MdLibraryBooks } from 'react-icons/md'
 import { IoMdExit } from 'react-icons/io'
 
-export const Navbar = ({slide,setSlide}) => {
+// eslint-disable-next-line react/prop-types
+export const Navbar = ({setSlide}) => {
 	const dispatch = useDispatch()
 	const onLogout = () => {
 		dispatch(startLogout())
