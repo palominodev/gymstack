@@ -20,7 +20,7 @@ export const Plans = () => {
 				<h2 className="text-5xl md:text-6xl font-bold text-white" >Planes</h2>
 				<button
 					onClick={() => navigate('/plans/new')}
-					className="mx-4 p-2 bg-orange-700 font-bold text-white rounded-md transition-all duration-300 hover:bg-orange-600 md:text-lg">
+					className="mx-4 p-2 bg-green-600 font-bold text-white rounded-md transition-all duration-300 hover:bg-green-500 md:text-lg">
 					Crear nuevo
 				</button>
 			</div>

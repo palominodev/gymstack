@@ -21,7 +21,7 @@ export const CardPlan = ({ price, name = 'Plan Name', beneficios = [], id }) => 
 	}
 	return (
 		<article
-			className="flex flex-col items-center rounded-md p-4 bg-orange-300 justify-between font-sans">
+			className="flex flex-col items-center rounded-md p-4 bg-blue-400 justify-between font-sans">
 			<p className="text-3xl text-center mb-2">{name}</p>
 			<p className="text-3xl text-center mb-4 justify-self-start" >
 				<span className="text-7xl font-bold">{price}</span> soles

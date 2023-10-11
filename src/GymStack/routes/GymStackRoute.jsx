@@ -6,6 +6,7 @@ import { ClientRegister } from "../view/ClientRegister"
 import { Plans } from "../view/Plans"
 import { PlansRegister } from "../view/PlansRegister"
 import { EditClient } from "../view/EditClient"
+import { Activity } from "../view/Activity"
 
 export const GymStackRoute = () => {
 	return (
@@ -17,6 +18,7 @@ export const GymStackRoute = () => {
 				<Route path={'/plans'} element={<Plans />} />
 				<Route path={'/plans/new'} element={<PlansRegister />} />
 				<Route path={'/edit/:id'} element={<EditClient/> } />
+				<Route path={'/activity'} element={ <Activity /> } />
 				<Route path={'/*'} element={<Navigate to={'/admin'} />} />
 			</Routes>
 		</Template>

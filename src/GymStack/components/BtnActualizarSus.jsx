@@ -17,7 +17,7 @@ export const BtnActualizarSus = ({ vence, id }) => {
         <label htmlFor="type" className="mb-6">¿A qué plan desear actualizar?</label>
         <select
           ref={selectRef}
-          className="mb-5 p-2 text-center font-semibold text-xl rounded-md bg-orange-500"
+          className="text-black mt-5 p-2 text-center font-semibold text-xl rounded-md bg-gray-400"
           name="type"
           id="type">
           <option
@@ -25,7 +25,7 @@ export const BtnActualizarSus = ({ vence, id }) => {
             className="text-sm font-bold disabled:text-slate-700" value="none">--Selecciona plan--</option>
           {
             planes.map(plan => (
-              <option key={plan.id} className="text-sm font-bold" value={JSON.stringify(plan)}>{plan.name} - {plan.month_durations} meses</option>
+              <option key={plan.id} className="text-sm font-bold text-black" value={JSON.stringify(plan)}>{plan.name} - {plan.month_durations} meses</option>
             ))
           }
         </select>

@@ -20,7 +20,7 @@ export const Login = () => {
   }
 
   return (
-    <div className="flex min-h-screen justify-center items-center bg-orange-500">
+    <div className="flex min-h-screen justify-center items-center bg-blue-500">
       <form
         className="border rounded-md p-5 flex flex-col gap-2"
         onSubmit={onLogin}
@@ -57,7 +57,7 @@ export const Login = () => {
             </div>
         </div>
         <button
-          className="font-bold rounded-md border p-1 mt-2"
+          className="bg-blue-600 font-bold rounded-md p-1 mt-2"
         >Ingresar</button>
       </form>
     </div>
