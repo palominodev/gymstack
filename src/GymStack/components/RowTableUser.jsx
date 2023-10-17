@@ -8,7 +8,7 @@ import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
 
 // eslint-disable-next-line react/prop-types
-export const RowTableUser = ({complete_days, total_days, uid, name, last_name, phone, email, type, vence, status }) => {
+export const RowTableUser = ({complete_days, total_days, uid,dni='', name, last_name, phone, email, type, vence, status }) => {
 
 	const [isValid, setIsValid] = useState(status)
 	const navigate = useNavigate()
@@ -44,7 +44,7 @@ export const RowTableUser = ({complete_days, total_days, uid, name, last_name, p
 	},[vence]) 
 	return (
 		<tr className="even:bg-neutral-700">
-			<td className="border p-3" >{uid}</td>
+			<td className="border p-3" >{dni}</td>
 			<td className="border p-3" >{name}</td>
 			<td className="border p-3" >{last_name}</td>
 			<td className="border p-3" >{phone}</td>

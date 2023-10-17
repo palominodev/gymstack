@@ -44,7 +44,7 @@ export const Clients = () => {
         <table className="text-white">
           <thead className="bg-stone-950">
             <tr>
-              <th className="border p-3">ID</th>
+              <th className="border p-3">DNI</th>
               <th className="border p-3">Nombre</th>
               <th className="border p-3">Apellido</th>
               <th className="border p-3">Telefono</th>
@@ -53,7 +53,6 @@ export const Clients = () => {
               <th className="border p-3">Vence</th>
               <th className="border p-3">Estado</th>
               <th className="border p-3">Acciones</th>
-              <th className="border p-3">DNI</th>
             </tr>
           </thead>
           <tbody>
