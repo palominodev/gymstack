@@ -26,6 +26,7 @@ export const UserAttendance = () => {
       <form className="flex flex-wrap">
         <label className="block w-full text-center text-xl font-bold mb-2" htmlFor="search">Buscar Usuario</label>
         <input
+          placeholder="DNI"
           ref={inputSearchRef} 
           className="block w-full text-xl py-3 px-2 rounded-md border-2 border-blue-500" 
           type="text" 

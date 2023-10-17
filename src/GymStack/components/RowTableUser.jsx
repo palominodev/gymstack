@@ -64,9 +64,6 @@ export const RowTableUser = ({complete_days, total_days, uid, name, last_name, p
 						onClick={onEdit}
 						className="bg-amber-500 py-2 px-4 rounded-md font-bold"
 					>Editar</button>
-					{/* <button
-						className="bg-blue-600 py-2 px-4 rounded-md font-bold"
-					>Registro</button> */}
 				</div>
 			</td>
 		</tr>

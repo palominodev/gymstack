@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { startUpdateSuscription } from "../../store/gymstack/thunks"
 import { useRef } from "react"
 
-export const BtnActualizarSus = ({ vence, id }) => {
+export const BtnActualizarSus = ({ id }) => {
   const dispatch = useDispatch()
   const MySwal = withReactContent(Swal)
   const { planes } = useSelector(state => state.gymStack)
@@ -38,7 +38,7 @@ export const BtnActualizarSus = ({ vence, id }) => {
       cancelButtonColor: 'red'
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(startUpdateSuscription({ type: selectRef.current.value, vence, id }))
+        dispatch(startUpdateSuscription({ type: selectRef.current.value, vence: (new Date()).toString(), id }))
       }
     })
   }
