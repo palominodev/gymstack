@@ -53,6 +53,7 @@ export const Clients = () => {
               <th className="border p-3">Vence</th>
               <th className="border p-3">Estado</th>
               <th className="border p-3">Acciones</th>
+              <th className="border p-3">DNI</th>
             </tr>
           </thead>
           <tbody>

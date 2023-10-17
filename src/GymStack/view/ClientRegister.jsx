@@ -8,6 +8,7 @@ export const ClientRegister = () => {
 	const navigate = useNavigate()
 	const { planes } = useSelector( state => state.gymStack)
 	const {
+		dni,
 		name,
 		last_name,
 		phone,
@@ -16,6 +17,7 @@ export const ClientRegister = () => {
 		formState,
 		onInputChange
 	} = useForm({
+		dni: '',
 		name: '',
 		last_name: '',
 		phone: '',
@@ -36,6 +38,17 @@ export const ClientRegister = () => {
 				onSubmit={onCreatedClient}
 			>
 				<h2 className="text-5xl font-bold my-6 text-center text-white" >Registrar Cliente</h2>
+				<div className="flex flex-wrap justify-center">
+					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="dni">DNI</label>
+					<input
+						required
+						onChange={onInputChange}
+						value={dni}
+						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
+						type="number"
+						name="dni"
+						id="dni" />
+				</div>
 				<div className="flex flex-wrap justify-center">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="name">Nombre</label>
 					<input
