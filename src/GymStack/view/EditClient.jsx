@@ -11,6 +11,7 @@ export const EditClient = () => {
 	const [user] = users.filter(user => user.uid === id)
 
 	const {
+		dni,
 		name,
 		last_name,
 		phone,
@@ -18,6 +19,7 @@ export const EditClient = () => {
 		formState,
 		onInputChange
 	} = useForm({
+		dni: user.dni,
 		name: user.name,
 		last_name: user.last_name,
 		phone: user.phone,
@@ -37,6 +39,17 @@ export const EditClient = () => {
 				onSubmit={onEditClient}
 			>
 				<h2 className="text-5xl font-bold my-6 text-center text-white" >Editar {name}</h2>
+				<div className="flex flex-wrap justify-center">
+					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="dni">DNI</label>
+					<input
+						required
+						onChange={onInputChange}
+						value={dni}
+						className="block border-2 border-orange-700 rounded-md text-2xl p-2 text-center w-full max-w-md mx-6"
+						type="tel"
+						name="dni"
+						id="dni" />
+				</div>
 				<div className="flex flex-wrap justify-center">
 					<label className="text-white tracking-wider block w-full text-center text-xl font-semibold mb-2" htmlFor="name">Nombre</label>
 					<input
@@ -99,7 +112,7 @@ export const EditClient = () => {
 					</select>
 				</div> */}
 				<div className="flex flex-col items-center mt-4">
-					<input className="bg-black text-white p-4 text-2xl font-bold w-52 mb-5 rounded-md" type="submit" value="Crear Cliente" />
+					<input className="bg-black text-white p-4 text-2xl font-bold mb-5 rounded-md" type="submit" value="Actualizar datos" />
 				</div>
 			</form>
 		</section>
