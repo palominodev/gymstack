@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useDispatch, useSelector } from "react-redux"
-import { searchUsersByName } from "../../store/gymstack/gymstackSlice"
+import { searchUserByDNI, searchUsersByName } from "../../store/gymstack/gymstackSlice"
 import { SearchContainer } from "./SearchContainer"
 import { useEffect, useRef } from "react"
 import { startGetUsers } from "../../store/gymstack/thunks"
@@ -11,7 +11,7 @@ export const UserAttendance = () => {
   const { searchUsers, users } = useSelector(state => state.gymStack)
 
   const onSearch = () => {
-    dispatch(searchUsersByName(inputSearchRef.current.value))
+    dispatch(searchUserByDNI(inputSearchRef.current.value))
   }
 
   useEffect(() => {
