@@ -20,12 +20,12 @@ export const Login = () => {
   }
 
   return (
-    <div className="flex min-h-screen justify-center items-center bg-blue-500">
+    <div className="flex min-h-screen justify-center items-center bg-gradient-to-r from-royal-blue-300 to to-royal-blue-500">
       <form
         className="border rounded-md p-5 flex flex-col gap-2"
         onSubmit={onLogin}
       >
-        <h3 className="text-3xl font-bold text-center" >Inicio de Sesión</h3>
+        <h3 className="text-3xl font-bold text-center text-royal-blue-950" >Inicio de Sesión</h3>
         <div className="flex flex-col" >
           <label 
             className="font-bold"
@@ -57,7 +57,7 @@ export const Login = () => {
             </div>
         </div>
         <button
-          className="bg-blue-600 font-bold rounded-md p-1 mt-2"
+          className="bg-royal-blue-950 text-royal-blue-400 hover:bg-royal-blue-950/80 transition-colors font-bold rounded-md p-1 py-2 mt-2"
         >Ingresar</button>
       </form>
     </div>
